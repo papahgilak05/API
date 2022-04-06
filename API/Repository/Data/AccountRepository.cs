@@ -120,15 +120,13 @@ namespace API.Repository.Data
                      join pro in myCon.Profilings on acc.NIK equals pro.NIK
                      join edu in myCon.Educations on pro.EducationsId equals edu.Id
                      join uni in myCon.Universities on edu.UniversitiesId equals uni.Id
-                     join ar in myCon.AccountRoles on acc.NIK equals ar.NIK
-                     join rol in myCon.Roles on ar.RoleId equals rol.RoleId
                      orderby emp.NIK
                      select new
                      {
                          NIK = emp.NIK,
-                         FullName = emp.FirstName + emp.LastName,
+                         FullName = emp.FirstName + " " + emp.LastName,
                          Phone = emp.Phone,
-                         Gender =((Gender)emp.Gender).ToString(),
+                         Gender = ((Gender)emp.Gender).ToString(),
                          Email = emp.Email,
                          Birthdate = emp.BirthDate,
                          Salary = emp.Salary,
@@ -136,7 +134,7 @@ namespace API.Repository.Data
                          Degree = edu.Degree,
                          GPA = edu.GPA,
                          UniversityName = uni.Name,
-                         RoleName = rol.RoleName
+                         RoleName = myCon.Roles.Where(r => r.AccountRole.Any(ar => ar.NIK == emp.NIK)).ToList(),
                      }).ToList();
             return q;
         }

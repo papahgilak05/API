@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -20,6 +21,7 @@ namespace API.Models
         [Required]
         public string Email { get; set; }
         public Gender Gender { get; set; }
+        [JsonIgnore]
         public virtual Account Accounts { get; set; }
        
 

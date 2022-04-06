@@ -23,7 +23,17 @@ namespace Client.Controllers
             return View();
         }
 
-        public IActionResult Gilang()
+        public IActionResult Starwars()
+        {
+            return View();
+        }
+
+        public IActionResult Pokemon()
+        {
+            return View();
+        }
+
+        public IActionResult MasterData()
         {
             return View();
         }

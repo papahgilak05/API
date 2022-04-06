@@ -111,5 +111,8 @@ E:\MATERI METRODATA\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\TestCors\Inde
 E:\MATERI METRODATA\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Latihan\Privacy.cshtml.g.cs
 E:\MATERI METRODATA\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layoutlatihan.cshtml.g.cs
 E:\MATERI METRODATA\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Latihan\Index.cshtml.g.cs
-E:\MATERI METRODATA\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Latihan\Gilang.cshtml.g.cs
 E:\MATERI METRODATA\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Home\Login.cshtml.g.cs
+E:\MATERI METRODATA\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Latihan\Starwars.cshtml.g.cs
+E:\MATERI METRODATA\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Latihan\Pokemon.cshtml.g.cs
+E:\MATERI METRODATA\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Latihan\MasterData.cshtml.g.cs
+E:\MATERI METRODATA\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutMD.cshtml.g.cs
