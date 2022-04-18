@@ -1,4 +1,5 @@
 ﻿using Client.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -33,7 +34,13 @@ namespace Client.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Director,Manager")]
         public IActionResult MasterData()
+        {
+            return View();
+        }
+
+        public IActionResult Statistic()
         {
             return View();
         }

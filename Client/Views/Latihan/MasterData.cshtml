@@ -2,6 +2,8 @@
     ViewData["Title"] = "Home Page";
     Layout = "_layoutMD";
 }
+
+
 <table id="TableData" class="table table-light table-striped table-bordered border-light" style="margin-top: 50px;">
     <thead>
         <tr>
@@ -16,6 +18,297 @@
         </tr>
     </thead>
     <tbody>
-
     </tbody>
 </table>
+
+<!-- REGISTER Modal -->
+<div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registrasi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="register" onsubmit="Insert()" class="needs-validation" novalidate>
+
+                    <div class="form-row">
+                        @*Input First Name*@
+                        <div class="form-group col-md-6">
+                            <label for="FirstName">First Name</label>
+                            <input type="text" class="form-control" id="FirstName" placeholder="First Name" required>
+                            <div class="invalid-feedback">
+                                Insert First Name
+                            </div>
+                        </div>
+                        @*Input Last Name*@
+                        <div class="form-group col-md-6">
+                            <label for="LastName">Last Name</label>
+                            <input type="text" class="form-control" id="LastName" placeholder="Last Name" required>
+                            <div class="invalid-feedback">
+                                Insert Last Name
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        @*Input Phone*@
+                        <div class="form-group col-md-6">
+                            <label for="Phone">Phone</label>
+                            <input type="text" class="form-control" id="Phone" placeholder="Phone" required>
+                            <div class="invalid-feedback">
+                                Insert Phone
+                            </div>
+                        </div>
+
+                        @*Input Birthdate*@
+                        <div class="form-group col-md-3">
+                            <label for="Birthdate">Birthdate</label>
+                            <input type="date" id="Birthdate" />
+                            <div class="invalid-feedback">
+                                Insert Birthdate
+                            </div>
+                        </div>
+
+                        @*Input Salary*@
+                        <div class="form-group col-md-3">
+                            <label for="Salary">Salary</label>
+                            <input type="number" class="form-control" id="Salary" placeholder="1000000" required>
+                            <div class="invalid-feedback">
+                                Insert Salary
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        @*Input Email*@
+                        <div class="form-group col-md-6">
+                            <label for="Email">Email</label>
+                            <input type="email" class="form-control" id="Email" placeholder="email@email.com" required>
+                            <div class="invalid-feedback">
+                                Insert Email
+                            </div>
+                        </div>
+                        @*Input Gender*@
+                        <div class="form-group col-md-6">
+                            <label for="Gender">Gender</label>
+                            <div class="dropdown">
+                                <select id="Gender" class="custom-select mr-sm-2" required>
+                                    <option selected>Choose Gender</option>
+                                    <option value="0">Male</option>
+                                    <option value="1">Female</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                Insert Gender
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        @*Input Password*@
+                        <div class="form-group col-md-6">
+                            <label for="Password">Password</label>
+                            <input type="password" class="form-control" id="Password" placeholder="******" required>
+                            <div class="invalid-feedback">
+                                Insert Password
+                            </div>
+                        </div>
+                        @*Input Degree*@
+                        <div class="form-group col-md-6">
+                            <label for="Degree">Degree</label>
+                            <select id="Degree" class="form-control" required>
+                                <option selected>Choose Degree</option>
+                                <option value="Elementary School">Elementary School</option>
+                                <option value="Junior High School">Junior High School</option>
+                                <option value="Senior High School">Senior High School</option>
+                                <option value="Bachelor Degree">Bachelor Degree</option>
+                                <option value="Master Degree">Master Degree</option>
+                                <option value="Doctoral Degree">Doctoral Degree</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Select Degree
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        @*Input GPA*@
+                        <div class="form-group col-md-6">
+                            <label for="GPA">GPA</label>
+                            <input type="text" class="form-control" id="GPA" placeholder="0 - 4.00" required>
+                            <div class="invalid-feedback">
+                                Insert GPA
+                            </div>
+                        </div>
+                        @*Input University*@
+                        <div class="form-group col-md-6">
+                            <label for="University">University</label>
+                            <select id="UniversitiesID" class="form-control">
+                                <option selected>Choose University</option>
+                                <option value="1">Universitas Islam Indonesia</option>
+                                <option value="2">Universitas Gadjah Mada</option>
+                                <option value="3">Universitas Negeri Yogyakarta</option>
+                                <option value="4">Universitas Ahmad Dahlan</option>
+                                <option value="5">Universitas Kristen Duta Wacana</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register!!!!!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="Delete()">
+                    <div class="form-group">
+                        <label for="NIK">NIK</label>
+                        <input type="text" class="form-control" id="NIK" placeholder="Enter NIK" required>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update Modal -->
+<div class="modal fade" id="UpdateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">アップデート</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="Update()">
+
+                    <div class="form-group">
+                        <label for="NIK">NIK</label>
+                        <input type="text" class="form-control" id="NIKUpdate" placeholder="Enter NIK" readonly>
+                    </div>
+
+                    <div class="form-row">
+                        @*Update First Name*@
+                        <div class="form-group col-md-6">
+                            <label for="FirstName">First Name</label>
+                            <input type="text" class="form-control" id="FirstNameUpdate" placeholder="First Name">
+                        </div>
+                        @*Update Last Name*@
+                        <div class="form-group col-md-6">
+                            <label for="LastName">Last Name</label>
+                            <input type="text" class="form-control" id="LastNameUpdate" placeholder="Last Name">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        @*Update Phone*@
+                        <div class="form-group col-md-6">
+                            <label for="Phone">Phone</label>
+                            <input type="text" class="form-control" id="PhoneUpdate" placeholder="Phone">
+                        </div>
+
+                        @*Update Birthdate*@
+                        <div class="form-group col-md-3">
+                            <label for="Birthdate">Birthdate</label>
+                            <input type="date" id="BirthdateUpdate" />
+                        </div>
+
+                        @*Update Salary*@
+                        <div class="form-group col-md-3">
+                            <label for="Salary">Salary</label>
+                            <input type="number" class="form-control" id="SalaryUpdate" placeholder="1000000">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        @*Update Email*@
+                        <div class="form-group col-md-6">
+                            <label for="Email">Email</label>
+                            <input type="email" class="form-control" id="EmailUpdate" placeholder="email@email.com">
+                        </div>
+                        @*Update Gender*@
+                        <div class="form-group col-md-6">
+                            <label for="Gender">Gender</label>
+                            <div class="dropdown">
+                                <select id="GenderUpdate" class="custom-select mr-sm-2">
+                                    <option value="">Choose Gender</option>
+                                    <option value="0">Male</option>
+                                    <option value="1">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="form-row">
+                        Update Degree
+                        <div class="form-group col-md-12">
+                            <label for="Degree">Degree</label>
+                            <select id="DegreeUpdate" class="form-control">
+                                <option value="">Choose Degree</option>
+                                <option value="Elementary School">Elementary School</option>
+                                <option value="Junior High School">Junior High School</option>
+                                <option value="Senior High School">Senior High School</option>
+                                <option value="Bachelor Degree">Bachelor Degree</option>
+                                <option value="Master Degree">Master Degree</option>
+                                <option value="Doctoral Degree">Doctoral Degree</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        Update GPA
+                        <div class="form-group col-md-6">
+                            <label for="GPA">GPA</label>
+                            <input type="text" class="form-control" id="GPAUpdate" placeholder="0 - 4.00">
+                        </div>
+                        Update University
+                        <div class="form-group col-md-6">
+                            <label for="University">University</label>
+                            <select id="UniversitiesIDUpdate" class="form-control">
+                                <option value="">Choose University</option>
+                                <option value="1">Universitas Islam Indonesia</option>
+                                <option value="2">Universitas Gadjah Mada</option>
+                                <option value="3">Universitas Negeri Yogyakarta</option>
+                                <option value="4">Universitas Ahmad Dahlan</option>
+                                <option value="5">Universitas Kristen Duta Wacana</option>
+                            </select>
+                        </div>
+                    </div>*@
+                    <button type="submit" class="btn btn-primary">アップデート</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>

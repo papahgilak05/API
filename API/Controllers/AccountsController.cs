@@ -23,13 +23,21 @@ namespace API.Controllers
         [HttpPost("Register")]
         public ActionResult Register(RegisterVM registerVM) 
         {
-            accRepository.Insert(registerVM);
+            if(accRepository.GetPhone(registerVM.Phone)!= null)
+            {
+                return StatusCode(400, new { status = HttpStatusCode.BadRequest, Message = "Nomor Telephone Sudah Digunakan" });
+            }
+            if(accRepository.GetEmail(registerVM.Email)!= null)
+            {
+                return StatusCode(400, new { status = HttpStatusCode.BadRequest, Message = "Email Sudah Digunakan" });
+            }
+            var result = accRepository.Insert(registerVM);
             return StatusCode(200, new { status = HttpStatusCode.OK, Message = "Data berhasil ditambahkan" });
         }
         [HttpPost("Login")]
         public ActionResult Login(LoginVM loginVM)
         {
-            var result = accRepository.Logon(loginVM);
+            var result = accRepository.Login(loginVM);
             if (result == 0)
             {
                 return StatusCode(404, new { Status = HttpStatusCode.NotFound, Message = "Email Salah" });
@@ -45,13 +53,13 @@ namespace API.Controllers
         [HttpPost("LoginJWT")]
         public ActionResult LoginJWT(LoginVM loginVM)
         {
-            var ceklogin = accRepository.Logon(loginVM);
-            if(ceklogin > 0)
+            var ceklogin = accRepository.Login(loginVM);
+            if(ceklogin == 2)
             {
                 var result = accRepository.GenerateJWT(loginVM);
-                return StatusCode(200, new { status = HttpStatusCode.OK,result, Message = "Token berhasil Dibuat" });
+                return StatusCode(200, new { status = HttpStatusCode.OK,JWT = result, message = "Login Berhasil" });
             }
-            return BadRequest();
+            return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Login Gagal" });
         }
 
         [Authorize()]

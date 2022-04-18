@@ -30,9 +30,10 @@ namespace API.Repository.Data
 
         public int Insert(RegisterVM registerVM)
         {
+            string NIK = generatedNIK();
             var emp = new Employee
             {
-                NIK = registerVM.NIK,
+                NIK = NIK,
                 FirstName = registerVM.FirstName,
                 LastName = registerVM.LastName,
                 Phone = registerVM.Phone,
@@ -93,12 +94,10 @@ namespace API.Repository.Data
         }
         
 
-        public int Logon(LoginVM loginVM)
+        public int Login(LoginVM loginVM)
         {
             var emp = myCon.Employees.Where(e => e.Email == loginVM.Email).SingleOrDefault();
             //var acc = myCon.Employees.Include("Accounts").Where(e => e.Email == loginVM.Email && e.Accounts.password == loginVM.Password ).SingleOrDefault();
-            
-            
             if(emp == null)
             {
                 return 0;
@@ -261,6 +260,35 @@ namespace API.Repository.Data
             return result;
         }*/
 
+
+        private string generatedNIK()
+        {
+            var tahun = DateTime.Now.ToString("yyyy");
+            var nik = myCon.Employees.AsNoTracking().ToList();
+            if (nik.Count == 0) return tahun + "001";
+
+            var lastnik = nik.Max(e => Int32.Parse(e.NIK)).ToString();
+
+            var tahunbuat = lastnik.Substring(0, 4);
+            if(tahunbuat == tahun)
+            {
+                var identityNIK = Int32.Parse(lastnik.Substring(6))+1;
+                return tahun + "00" + identityNIK.ToString();
+            }
+            else
+            {
+                return tahun +"001";
+            }
+        }
+
+        public Employee GetEmail(string Email)
+        {
+            return myCon.Employees.FirstOrDefault(e=> e.Email== Email);
+        }
+        public Employee GetPhone(string Phone)
+        {
+            return myCon.Employees.FirstOrDefault(e => e.Phone == Phone);
+        }
         private static string GETRANDOMSALT()
         {
             return BCrypt.Net.BCrypt.GenerateSalt(12);

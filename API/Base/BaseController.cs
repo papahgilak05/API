@@ -22,13 +22,14 @@ namespace API.Base
         public ActionResult<Entity> GetData()
         {
             var result = repository.Get();
-            if (repository.Get().Count() == 0)
+            /*if (repository.Get().Count() == 0)
             {
                 return StatusCode(404, new { status = HttpStatusCode.NotFound, result, Message = "Data Tidak Ditemukan" });
 
             }
-            else
-            return StatusCode(200, new {status = HttpStatusCode.OK, result, Message = "Data Ditemukan" });
+            else*/
+            //return StatusCode(200, new {status = HttpStatusCode.OK, result, Message = "Data Ditemukan" });
+            return Ok(result);
         }
 
         [HttpPost]
